@@ -17,7 +17,7 @@ namespace Edanoue.Node.Internal
 
         #region Constructors 
 
-        internal OutputPort(INode node, int index = 0) : base(node, index) { }
+        public OutputPort(INode node, int index = 0) : base(node, index) { }
 
         #endregion
     }
