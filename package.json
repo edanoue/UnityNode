@@ -1,0 +1,12 @@
+{
+  "name": "com.edanoue.node",
+  "description": "",
+  "version": "1.0.0",
+  "displayName": "Node",
+  "unity": "2021.2",
+  "author": {
+    "name": "Edanoue, Inc.",
+    "email": "contact@edanoue.com",
+    "url": "https://edanoue.com"
+  }
+}
