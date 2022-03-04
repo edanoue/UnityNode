@@ -21,8 +21,8 @@ namespace UnitTests
         }
 
         // Make nodes
-        readonly INode A = new Node("A");
-        readonly INode B = new Node("B");
+        readonly INode A = new TestNode("A");
+        readonly INode B = new TestNode("B");
 
         [Test]
         public void Index()
@@ -160,14 +160,14 @@ namespace UnitTests
             // portA has only portB
             foreach (var p in portA.ConnectedPorts)
             {
-                if (p != portB)
+                if ((TestPort)p != portB)
                     Assert.Fail();
             }
 
             // portB has only portA
             foreach (var p in portB.ConnectedPorts)
             {
-                if (p != portA)
+                if ((TestPort)p != portA)
                     Assert.Fail();
             }
         }

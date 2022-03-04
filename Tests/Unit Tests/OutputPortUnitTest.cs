@@ -11,8 +11,8 @@ namespace UnitTests
     public sealed class OutputPortUnitTest
     {
         // Make nodes
-        readonly INode A = new Node("A");
-        readonly INode B = new Node("B");
+        readonly INode A = new TestNode("A");
+        readonly INode B = new TestNode("B");
 
         [Test]
         public void Connect()

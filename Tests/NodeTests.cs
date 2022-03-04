@@ -8,18 +8,18 @@ public sealed class NodeTests
     [Test]
     public void ParentingTest()
     {
-        var A = new Node("foo");
+        var A = new TestNode("foo");
         Assert.That(A.Path, Is.EqualTo("/foo"));
 
-        var B = new Node("bar", A);
+        var B = new TestNode("bar", A);
         Assert.That(B.Path, Is.EqualTo("/foo/bar"));
     }
 
     [Test]
     public void Connect()
     {
-        var A = new Node("foo");
-        var B = new Node("bar");
+        var A = new TestNode("foo");
+        var B = new TestNode("bar");
         var A_Out = A.OutputPort();
         var B_In = B.InputPort();
 
@@ -34,8 +34,8 @@ public sealed class NodeTests
     [Test]
     public void DisconnectNormal()
     {
-        var A = new Node("foo");
-        var B = new Node("bar");
+        var A = new TestNode("foo");
+        var B = new TestNode("bar");
         var A_Out = A.OutputPort();
         var B_In = B.InputPort();
 
@@ -56,8 +56,8 @@ public sealed class NodeTests
     [Test]
     public void DisconnectInverse()
     {
-        var A = new Node("foo");
-        var B = new Node("bar");
+        var A = new TestNode("foo");
+        var B = new TestNode("bar");
         var A_Out = A.OutputPort();
         var B_In = B.InputPort();
 

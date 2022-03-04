@@ -12,8 +12,8 @@ namespace UnitTests
     public sealed class ConnectionUnitTest
     {
         // Make nodes
-        readonly INode A = new Node("A");
-        readonly INode B = new Node("B");
+        readonly INode A = new TestNode("A");
+        readonly INode B = new TestNode("B");
         IPort A_IN => A.InputPort();
         IPort A_OUT => A.OutputPort();
         IPort B_IN => B.InputPort();

@@ -8,32 +8,31 @@ namespace Edanoue.Node.Internal
 {
     /// <summary>
     ///
-    /// /// </summary>
-    public class Node : INetworkItem, INode
+    /// </summary>
+    public abstract class NodeBase : INetworkItem, INode
     {
         string _name;
-        readonly Node? _parent;
-        readonly List<InputPort> _inputPorts;
-        readonly List<OutputPort> _outputPorts;
+        readonly NodeBase? _parent;
         static readonly string _pathSepareter = "/";
         string? _pathCache;
 
-        public Node(string name, Node? parent = null)
+        public NodeBase(string name, NodeBase? parent = null)
         {
             _name = name;
             _parent = parent;
-            _inputPorts = new();
-            _outputPorts = new();
-            _inputPorts.Add(new InputPort(this, 0));
-            _outputPorts.Add(new OutputPort(this, 0));
-            // make In -> Out connection
-            _inputPorts[0].Connect(_outputPorts[0]);
         }
 
         #region INetworkItem impls
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name => _name;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public string Path
         {
             get
@@ -56,22 +55,9 @@ namespace Edanoue.Node.Internal
 
         #region INode impls
 
-        public IPort InputPort(int index = 0)
-        {
-            if (_inputPorts.Count > index)
-            {
-                return _inputPorts[index];
-            }
-            throw new System.IndexOutOfRangeException();
-        }
-        public IPort OutputPort(int index = 0)
-        {
-            if (_outputPorts.Count > index)
-            {
-                return _outputPorts[index];
-            }
-            throw new System.IndexOutOfRangeException();
-        }
+        public abstract IPort InputPort(int index = 0);
+
+        public abstract IPort OutputPort(int index = 0);
 
         #endregion
 
