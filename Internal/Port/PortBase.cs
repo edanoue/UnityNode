@@ -1,6 +1,5 @@
 #nullable enable
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Edanoue.Node.Interfaces;
@@ -10,7 +9,7 @@ namespace Edanoue.Node.Internal
     /// <summary>
     /// IPort 実装クラス
     /// </summary>
-    public abstract class PortBase : IPort, IEnumerable<INode>, IEquatable<PortBase>
+    public abstract class PortBase : IPort, IEquatable<PortBase>
     {
         readonly int _index;
         readonly INode _node;
@@ -141,20 +140,6 @@ namespace Edanoue.Node.Internal
             this._connections.Remove(connection);
             other.Disconnect(this);
             return true;
-        }
-
-        #endregion
-
-        #region IEnumerable implements
-
-        IEnumerator<INode> IEnumerable<INode>.GetEnumerator()
-        {
-            return _connections.Select(c => c.Other(this).Node).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _connections.Select(c => c.Other(this).Node).GetEnumerator();
         }
 
         #endregion

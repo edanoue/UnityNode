@@ -1,7 +1,7 @@
 {
   "name": "com.edanoue.node",
-  "description": "",
-  "version": "1.0.0",
+  "description": "base node structures",
+  "version": "1.0.1",
   "displayName": "Node",
   "unity": "2021.2",
   "author": {

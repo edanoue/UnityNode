@@ -171,23 +171,5 @@ namespace UnitTests
                     Assert.Fail();
             }
         }
-
-        [Test]
-        public void INodeEnumeration()
-        {
-            var portA = new TestPort(A);
-            var portB = new TestPort(B);
-
-            // make connection
-            portA.Connect(portB);
-
-            // portA enumeration check
-            Assert.That(portA.Count(), Is.EqualTo(1));
-            Assert.That(portA.Count(node => node == B), Is.EqualTo(1));
-
-            // portB enumeration check
-            Assert.That(portB.Count(), Is.EqualTo(1));
-            Assert.That(portB.Count(node => node == A), Is.EqualTo(1));
-        }
     }
 }

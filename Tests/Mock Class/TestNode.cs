@@ -8,7 +8,15 @@ internal class TestNode : NodeBase
     InputPort _input;
     OutputPort _output;
 
-    internal TestNode(string name, NodeBase? parent = null) : base(parent)
+    internal TestNode(string name)
+    {
+        _name = name;
+        _input = new(this, 0);
+        _output = new(this, 0);
+        _input.Connect(_output);
+    }
+
+    internal TestNode(string name, NodeBase parent) : base(parent)
     {
         _name = name;
         _input = new(this, 0);
