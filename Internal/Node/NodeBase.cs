@@ -1,7 +1,4 @@
 #nullable enable
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Edanoue.Node.Interfaces;
 
 namespace Edanoue.Node.Internal
@@ -11,23 +8,54 @@ namespace Edanoue.Node.Internal
     /// </summary>
     public abstract class NodeBase : INetworkItem, INode
     {
-        string _name;
         readonly NodeBase? _parent;
         static readonly string _pathSepareter = "/";
         string? _pathCache;
 
-        public NodeBase(string name, NodeBase? parent = null)
+        #region Constructors
+
+        public NodeBase()
         {
-            _name = name;
+            _parent = null;
+        }
+
+        public NodeBase(NodeBase parent)
+        {
             _parent = parent;
         }
+
+        #endregion
+
+        #region abstract Methods
+
+        /// <summary>
+        /// Get node name
+        /// </summary>
+        /// <value></value>
+        public abstract string Name { get; }
+
+        /// <summary>
+        /// Get node inputport
+        /// </summary>
+        /// <param name="index">port index</param>
+        /// <returns></returns>
+        public abstract IPort InputPort(int index = 0);
+
+        /// <summary>
+        /// Get node outputport
+        /// </summary>
+        /// <param name="index">port index</param>
+        /// <returns></returns>
+        public abstract IPort OutputPort(int index = 0);
+
+        #endregion
 
         #region INetworkItem impls
 
         /// <summary>
         /// 
         /// </summary>
-        public string Name => _name;
+        string INetworkItem.Name => this.Name;
 
         /// <summary>
         /// 
@@ -55,9 +83,8 @@ namespace Edanoue.Node.Internal
 
         #region INode impls
 
-        public abstract IPort InputPort(int index = 0);
-
-        public abstract IPort OutputPort(int index = 0);
+        IPort INode.InputPort(int index) => this.InputPort(index);
+        IPort INode.OutputPort(int index) => this.OutputPort(index);
 
         #endregion
 
